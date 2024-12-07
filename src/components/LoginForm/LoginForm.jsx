@@ -17,11 +17,9 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validation 
     setCustomerIdError(customerId.trim() === "");
     setPasswordError(password.trim() === "");
 
-    // Only dispatch login if validation passes
     if (customerId.trim() !== "" && password.trim() !== "") {
       dispatch(login(customerId, password));
     }
