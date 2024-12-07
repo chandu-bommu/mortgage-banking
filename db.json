@@ -1,0 +1,11 @@
+{
+    "users": [
+      { "id": 1, "name": "John Doe", "customerId": "JD123", "password": "password123" },
+      { "id": 2, "name": "Jane Smith", "customerId": "JS456", "password": "securepass" }
+    ],
+    "accounts": [
+      { "id": 101, "userId": 1, "accountNumber": "SAV1234", "accountType": "Savings", "availableBalance": 5000, "lastTransactionDate": "2024-11-20" },
+      { "id": 102, "userId": 1, "accountNumber": "MTG5678", "accountType": "Mortgage", "availableBalance": 100000, "lastTransactionDate": "2024-12-01" },
+      { "id": 201, "userId": 2, "accountNumber": "SAV9012", "accountType": "Savings", "availableBalance": 2000, "lastTransactionDate": "2024-12-05" }
+    ]
+  }
