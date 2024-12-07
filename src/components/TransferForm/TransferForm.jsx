@@ -100,6 +100,7 @@ const TransferForm = () => {
                     id="amount"
                     label="Amount"
                     variant="outlined"
+                    type="number"
                     value={formState?.amount}
                     error={formErrorState?.amount}
                     helperText={formErrorState?.amount}
