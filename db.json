@@ -13,7 +13,8 @@
       }
     }
   ],
-  "accounts": [
+  "accounts": {
+    "accounts": [
     {
       "accountId": "12345",
       "accountType": "savings",
@@ -33,5 +34,5 @@
       "outstanding": 85000.00,
       "lastTransactionDate": "2024-12-08"
     }
-  ]
+  ]}
 }
