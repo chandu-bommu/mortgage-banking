@@ -1,12 +1,14 @@
 import * as React from 'react';
 import List from '@mui/material/List';
 import AccountCard from './AccountCard';
-import { Divider } from '@mui/material';
 
-const AccountList = () => {
+const AccountList = ({ accounts }) => {
   return (
     <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-      <AccountCard />
+      {accounts?.map((account, index) => (
+        <AccountCard key={account.accountType.concat('_', index)} account={account} />
+      ))
+      }
     </List>
   );
 };
