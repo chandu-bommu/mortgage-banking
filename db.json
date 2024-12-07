@@ -1,5 +1,5 @@
 {
-    "users": [
+  "users": [
     {
       "id": 1,
       "customerId": "user123",
@@ -13,9 +13,25 @@
       }
     }
   ],
-    "accounts": [
-      { "id": 101, "userId": 1, "accountNumber": "SAV1234", "accountType": "Savings", "availableBalance": 5000, "lastTransactionDate": "2024-11-20" },
-      { "id": 102, "userId": 1, "accountNumber": "MTG5678", "accountType": "Mortgage", "availableBalance": 100000, "lastTransactionDate": "2024-12-01" },
-      { "id": 201, "userId": 2, "accountNumber": "SAV9012", "accountType": "Savings", "availableBalance": 2000, "lastTransactionDate": "2024-12-05" }
-    ]
-  }
+  "accounts": [
+    {
+      "accountId": "12345",
+      "accountType": "savings",
+      "accountTitle": "My Savings Account",
+      "accountNumber": "106000001",
+      "currency": "SGD",
+      "balance": 65000.00,
+      "isPrimary": true,
+      "lastTransactionDate": "2024-12-07"
+    },
+    {
+      "accountId": "34567",
+      "accountType": "mortgage",
+      "accountTitle": "My Mortgage Account",
+      "accountNumber": "1090000003",
+      "currency": "SGD",
+      "outstanding": 85000.00,
+      "lastTransactionDate": "2024-12-08"
+    }
+  ]
+}

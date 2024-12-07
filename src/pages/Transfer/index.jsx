@@ -1,10 +1,9 @@
 import React from 'react';
+import TransferForm from '../../components/TransferForm/TransferForm';
 
 const Transfer = () => {
     return (
-        <div className="test">
-            Transfer
-        </div>
+        <TransferForm />
     );
 };
 
