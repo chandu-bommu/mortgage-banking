@@ -1,37 +1,38 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login, fetchAccountSummary, logout } from "../../store/action";
-import { TextField, Button, Typography, Box } from "@mui/material";
+import { login } from "../../store/action";
+import { TextField, Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  const userName = useSelector((state) => state?.user?.name); 
+  const userName = useSelector((state) => state?.user?.name);
   const [customerId, setCustomerId] = useState("");
   const [password, setPassword] = useState("");
+  const [customerIdError, setCustomerIdError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state?.isAuthenticated);
   const navigate = useNavigate();
-  const [welcomeMessage, setWelcomeMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(login(customerId, password));
-  };
-
-  const handleLogout = () => {
-    dispatch(logout());
-    setWelcomeMessage("");
-    navigate("/login");
+    setCustomerIdError(customerId.trim() === "");
+    setPasswordError(password.trim() === "");
+    if (customerId.trim() !== "" && password.trim() !== "") {
+      setSubmitted(true);
+      dispatch(login(customerId, password));
+    }
   };
 
   useEffect(() => {
-    const navigateToDashboard = () => {
+    const navigateToSummary = async () => {
       if (isAuthenticated) {
-          navigate("/my/accounts");
-        }
-      };
-    navigateToDashboard();
-  }, [isAuthenticated]); 
+        navigate("/my/accounts");
+      }
+    };
+    navigateToSummary();
+  }, [isAuthenticated]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -42,6 +43,8 @@ const LoginForm = () => {
         onChange={(e) => setCustomerId(e.target.value)}
         fullWidth
         margin="normal"
+        error={customerIdError}
+        helperText={customerIdError && "Customer ID is required"}
       />
       <TextField
         label="Password"
@@ -50,21 +53,18 @@ const LoginForm = () => {
         onChange={(e) => setPassword(e.target.value)}
         fullWidth
         margin="normal"
+        error={passwordError}
+        helperText={passwordError && "Password is required"}
       />
+      {/* Display error if authentication fails */}
+      {!isAuthenticated && customerId && password && submitted && (
+        <Typography variant="body2" color="error">
+          Invalid User
+        </Typography>
+      )}
       <Button type="submit" variant="contained" color="primary">
         Login
       </Button>
-      {isAuthenticated && (
-        <Button variant="contained" color="secondary" onClick={handleLogout}>
-          Logout
-        </Button>
-      )}
-
-      {welcomeMessage && (
-        <Box sx={{ mt: 2 }}>
-          <Typography variant="body1">{welcomeMessage}</Typography>
-        </Box>
-      )}
     </form>
   );
 };

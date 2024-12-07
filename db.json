@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "customerId": "user123",
-      "password": "password123",
+      "customerId": "user_1",
+      "password": "Password@123",
       "accessToken": "mock-access-token",
       "user": {
         "id": "e7367a49-d74f-436a-8517-fb47ff335891",
