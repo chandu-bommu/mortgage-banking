@@ -1,10 +1,9 @@
 import React from 'react';
+import AccountSummary from '../../components/AccountSummary/AccountSummary';
 
 const Accounts = () => {
     return (
-        <div className="test">
-            Accounts
-        </div>
+        <AccountSummary />
     );
 };
 
