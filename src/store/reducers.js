@@ -1,5 +1,5 @@
-<<<<<<< Updated upstream
 const initialState = {
+  isAuthenticated: false,
   user: null,
   loading: false,
   error: null,
@@ -8,12 +8,24 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOGIN_REQUEST':
+    case "LOGIN_REQUEST":
       return { ...state, loading: true, error: null };
-    case 'LOGIN_SUCCESS':
-      return { ...state, loading: false, user: action.payload, error: null };
-    case 'LOGIN_FAILURE':
+    case "LOGIN_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: true,
+        user: action.payload.user,
+      };
+    case "LOGIN_FAILURE":
       return { ...state, loading: false, error: action.payload };
+    case "LOGOUT":
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null,
+        error: null,
+      };
     case 'FETCH_ACCOUNT_SUMMARY_REQUEST':
       return { ...state, loading: true, error: null };
     case 'FETCH_ACCOUNT_SUMMARY_SUCCESS':
@@ -31,66 +43,3 @@ const rootReducer = (state = initialState, action) => {
 };
 
 export default rootReducer;
-=======
-  // const initialState = {
-  //   isAuthenticated: false,
-  //   user: null,
-  //   loading: false,
-  //   error: null
-  // };
-  
-  // const rootReducer = (state = initialState, action) => {
-  //   switch (action.type) {
-  //     case 'LOGIN_REQUEST':
-  //       return { ...state, loading: true, error: null };
-  //     case 'LOGIN_SUCCESS':
-  //       return { 
-  //         ...state, 
-  //         loading: false, 
-  //         isAuthenticated: true, 
-  //         user: action.payload.user 
-  //       };
-  //     case 'LOGIN_FAILURE':
-  //       return { ...state, loading: false, error: action.payload };
-  //     default:
-  //       return state;
-  //   }
-  // };
-
-  // export default rootReducer;
-
-
-  const initialState = {
-    isAuthenticated: false,
-    user: null,
-    loading: false,
-    error: null,
-  };
-  
-  const rootReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case "LOGIN_REQUEST":
-        return { ...state, loading: true, error: null };
-      case "LOGIN_SUCCESS":
-        return {
-          ...state,
-          loading: false,
-          isAuthenticated: true,
-          user: action.payload.user,
-        };
-      case "LOGIN_FAILURE":
-        return { ...state, loading: false, error: action.payload };
-      case "LOGOUT":
-        return {
-          ...state,
-          isAuthenticated: false,
-          user: null,
-          error: null,
-        };
-      default:
-        return state;
-    }
-  };
-  
-  export default rootReducer;
->>>>>>> Stashed changes

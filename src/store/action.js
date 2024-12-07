@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream
-import axios from 'axios';
-import apiClient from '../api/client';
-=======
 import axios from "axios";
->>>>>>> Stashed changes
 
 export const login = (customerId, password) => async (dispatch) => {
   dispatch({ type: "LOGIN_REQUEST" });
@@ -21,8 +16,9 @@ export const login = (customerId, password) => async (dispatch) => {
     } else {
       dispatch({ type: "LOGIN_FAILURE", payload: "Invalid credentials" });
     }
-<<<<<<< Updated upstream
-};
+}catch (error) {
+  dispatch({ type: 'LOGIN_FAILURE', payload: error.response?.message });
+}};
 
 export const logout = () => {
 
@@ -67,35 +63,4 @@ export const fetchAccounts = () => async (dispatch) => {
     } catch (error) {
         dispatch({ type: 'FETCH_ACCOUNT_SUMMARY_FAILURE', payload: error.response?.message });
     }
-=======
-  } catch (error) {
-    dispatch({ type: "LOGIN_FAILURE", payload: error.message });
-  }
-};
-
-export const logout = () => (dispatch) => {
-  localStorage.removeItem("token");
-  dispatch({ type: "LOGOUT" });
-};
-
-export const fetchAccountSummary = () => async (dispatch) => {
-  dispatch({ type: "FETCH_ACCOUNT_SUMMARY_REQUEST" });
-  try {
-    const token = localStorage.getItem("token");
-    const response = await axios.get("/account-summary", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    dispatch({
-      type: "FETCH_ACCOUNT_SUMMARY_SUCCESS",
-      payload: response.data,
-    });
-  } catch (error) {
-    dispatch({
-      type: "FETCH_ACCOUNT_SUMMARY_FAILURE",
-      payload: error.message,
-    });
-  }
->>>>>>> Stashed changes
 };
