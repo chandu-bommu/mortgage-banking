@@ -10,7 +10,6 @@ const ACCOUNT_TYPES = {
     savings: 'Savings',
     mortgage: 'Mortgages',
     creditCard: 'CreditCards'
-
 }
 const AccountSummary = ({ accountSummary }) => {
 

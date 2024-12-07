@@ -3,7 +3,29 @@ const initialState = {
   user: null,
   loading: false,
   error: null,
-  accountSummary: [],
+  accountSummary: {
+    // "accounts": [
+    //   {
+    //     "accountId": "12345",
+    //     "accountType": "savings",
+    //     "accountTitle": "My Savings Account",
+    //     "accountNumber": "106000001",
+    //     "currency": "SGD",
+    //     "balance": 65000.00,
+    //     "isPrimary": true,
+    //     "lastTransactionDate": "2024-12-07"
+    //   },
+    //   {
+    //     "accountId": "34567",
+    //     "accountType": "mortgage",
+    //     "accountTitle": "My Mortgage Account",
+    //     "accountNumber": "1090000003",
+    //     "currency": "SGD",
+    //     "outstanding": 85000.00,
+    //     "lastTransactionDate": "2024-12-08"
+    //   }
+    // ]
+  },
 };
 
 const rootReducer = (state = initialState, action) => {
