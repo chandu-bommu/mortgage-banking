@@ -8,7 +8,7 @@ app.db = router.db;
 
 const rules = auth.rewriter({
   users: 600,
-  accounts: 640
+  accounts: 600
 });
 
 app.use(rules);
