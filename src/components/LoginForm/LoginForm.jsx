@@ -10,29 +10,29 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [customerIdError, setCustomerIdError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state?.isAuthenticated);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setCustomerIdError(customerId.trim() === "");
     setPasswordError(password.trim() === "");
-
     if (customerId.trim() !== "" && password.trim() !== "") {
+      setSubmitted(true);
       dispatch(login(customerId, password));
     }
   };
 
   useEffect(() => {
-    const fetchSummary = async () => {
+    const navigateToSummary = async () => {
       if (isAuthenticated) {
         navigate("/my/accounts");
       }
     };
-    fetchSummary();
-  }, [isAuthenticated, dispatch, navigate]);
+    navigateToSummary();
+  }, [isAuthenticated]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -56,6 +56,12 @@ const LoginForm = () => {
         error={passwordError}
         helperText={passwordError && "Password is required"}
       />
+      {/* Display error if authentication fails */}
+      {!isAuthenticated && customerId && password && submitted && (
+        <Typography variant="body2" color="error">
+          Invalid User
+        </Typography>
+      )}
       <Button type="submit" variant="contained" color="primary">
         Login
       </Button>

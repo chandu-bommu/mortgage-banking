@@ -8,6 +8,7 @@ import {logout} from "./../store/action";
 const Navigation = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -18,7 +19,6 @@ const Navigation = () => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
     if (token && token !== 'null' && token !== 'undefined') {
       setIsAuthenticated(true);
     }
@@ -30,7 +30,7 @@ const Navigation = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Banking App
         </Typography>
-        {isAuthenticated && (
+        {token && token !== 'null' && token !== 'undefined' && (
           <>
             <Button color="inherit" component={Link} to="/my/accounts">
               Account Summary
