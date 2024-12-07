@@ -3,13 +3,11 @@ import axios from "axios";
 export const login = (customerId, password) => async (dispatch) => {
   dispatch({ type: "LOGIN_REQUEST" });
   try {
-    // Get all users from json-server
     const response = await axios.get("http://localhost:5000/users");
     const user = response.data.find(
       (user) =>
         user.customerId === customerId && user.password === password,
     );
-
     if (user) {
       localStorage.setItem("token", user.accessToken);
       dispatch({ type: "LOGIN_SUCCESS", payload: { user: user.user } });

@@ -25,29 +25,13 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-
-    const fetchSummary = async () => {
+    const navigateToDashboard = () => {
       if (isAuthenticated) {
-        try {
-          await dispatch(fetchAccountSummary());
-
-          if (userName) { 
-            setWelcomeMessage(`Welcome, ${userName}!`);
-          }
-
           navigate("/my/accounts");
-        } catch (error) {
-          console.error("Error fetching account summary:", error);
-          if (error.response && error.response.status === 401) {
-            dispatch(logout());
-            navigate("/login");
-          }
         }
-      }
-    };
-
-    fetchSummary();
-  }, [isAuthenticated, dispatch, navigate]); 
+      };
+    navigateToDashboard();
+  }, [isAuthenticated]); 
 
   return (
     <form onSubmit={handleSubmit}>
