@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "customerId": "user_1",
+      "password": "Password@123",
+      "accessToken": "mock-access-token",
+      "user": {
+        "id": "e7367a49-d74f-436a-8517-fb47ff335891",
+        "email": "testemail@test.com",
+        "firstName": "Test",
+        "lastName": "User"
+      }
+    }
+  ],
+  "accounts": {
+    "accounts": [
+      {
+        "accountId": "12345",
+        "accountType": "savings",
+        "accountTitle": "My Savings Account",
+        "accountNumber": "106000001",
+        "currency": "SGD",
+        "balance": 65000.00,
+        "isPrimary": true,
+        "lastTransactionDate": "2024-12-07"
+      },
+      {
+        "accountId": "34567",
+        "accountType": "mortgage",
+        "accountTitle": "My Mortgage Account",
+        "accountNumber": "1090000003",
+        "currency": "SGD",
+        "outstanding": 85000.00,
+        "lastTransactionDate": "2024-12-08"
+      }
+    ]
+  }
+}
