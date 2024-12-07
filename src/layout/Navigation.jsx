@@ -1,13 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button } from '@mui/material';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {logout} from "./../store/action";
 
 const Navigation = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
+
   useEffect(() => {
-    const token = sessionStorage.getItem('token');
-    if (token && token !== 'null' && token !== 'undefined') { 
+    const token = localStorage.getItem('token');
+    if (token && token !== 'null' && token !== 'undefined') {
       setIsAuthenticated(true);
     }
   }, []);
@@ -25,6 +37,9 @@ const Navigation = () => {
             </Button>
             <Button color="inherit" component={Link} to="/my/accounts/transfer">
               Transfer
+            </Button>
+            <Button variant="contained" color="secondary" onClick={handleLogout}>
+              Logout
             </Button>
           </>
         )}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login, fetchAccountSummary, logout } from "../../store/action";
+import { login } from "../../store/action";
 import { TextField, Button, Typography, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
@@ -18,20 +18,19 @@ const LoginForm = () => {
     dispatch(login(customerId, password));
   };
 
-  const handleLogout = () => {
-    dispatch(logout());
-    setWelcomeMessage("");
-    navigate("/login");
-  };
-
   useEffect(() => {
-    const navigateToDashboard = () => {
+
+    const fetchSummary = async () => {
       if (isAuthenticated) {
+          if (userName) { 
+            setWelcomeMessage(`Welcome, ${userName}!`);
+          }
           navigate("/my/accounts");
-        }
-      };
-    navigateToDashboard();
-  }, [isAuthenticated]); 
+      }
+    };
+
+    fetchSummary();
+  }, [isAuthenticated, dispatch, navigate]); 
 
   return (
     <form onSubmit={handleSubmit}>
@@ -54,17 +53,6 @@ const LoginForm = () => {
       <Button type="submit" variant="contained" color="primary">
         Login
       </Button>
-      {isAuthenticated && (
-        <Button variant="contained" color="secondary" onClick={handleLogout}>
-          Logout
-        </Button>
-      )}
-
-      {welcomeMessage && (
-        <Box sx={{ mt: 2 }}>
-          <Typography variant="body1">{welcomeMessage}</Typography>
-        </Box>
-      )}
     </form>
   );
 };
