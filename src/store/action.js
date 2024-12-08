@@ -19,10 +19,9 @@ export const login = (customerId, password) => async (dispatch) => {
     }
 };
 
-export const logout = () => {
-
-    localStorage.removeItem('token');
-    window.location.href = '/login';
+export const logout = () => (dispatch) => {
+  localStorage.removeItem('token');
+  dispatch({ type: 'LOGOUT' });
 };
 
 
