@@ -47,5 +47,6 @@ You need to have Node.js and npm (or yarn) installed on your machine.
 
 ## Credentials For Logging-In
 
-   Customer ID: user_1
-   Password: Password@123
+Customer ID: user_1
+   
+Password: Password@123
